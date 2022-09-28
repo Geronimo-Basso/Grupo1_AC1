@@ -23,6 +23,8 @@ public:
     Persona(int DNI, string nombre, string apellidos);
     int getDNI();
     string Tostring();
+    void anadirAlHistorial(Libro leido);
+    vector<string> devolverhistorial();
 
 };
 

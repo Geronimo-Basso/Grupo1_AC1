@@ -80,6 +80,12 @@ int main() {
   cout << TGC1.getPoseedor().Tostring() << endl;
   TGC1.Asignar(Jorge);
   cout << TGC1.getPoseedor().Tostring() << endl;
+  TGC1.Asignar(Biblioteca);
+  Jorge.anadirAlHistorial(TheGoldenCompass);
+  cout << TGC1.getPoseedor().Tostring() << endl;
+    for (int i = 0; i < Jorge.devolverhistorial().size(); ++i) {
+        cout << Jorge.devolverhistorial().at(i);
+    }
   return 0;
 }
 

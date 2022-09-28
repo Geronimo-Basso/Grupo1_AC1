@@ -17,6 +17,7 @@ class Libro {
 public:
     Libro(string titulo, int ISBN, string categoria);
     Libro();
+    string getTitulo();
 
 };
 

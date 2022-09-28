@@ -10,3 +10,7 @@ Libro::Libro(string titulo, int ISBN, string categoria) {
     Libro::ISBN=ISBN;
     Libro::categoria=categoria;
 }
+
+string Libro::getTitulo() {
+    return Libro::titulo;
+}
