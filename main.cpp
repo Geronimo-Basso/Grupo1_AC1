@@ -1,4 +1,7 @@
 #include <iostream>
+#include "Persona.h"
+#include "Libro.h"
+#include "Ejemplar.h"
 using namespace std;
 
 
@@ -59,18 +62,25 @@ template <class T> T Stack<T>::topElement()
 // ----------------------------------------------------Stack-------------------------------------------------------------
 
 int main() {
-    Stack<int> stack;
-    stack.push(3);
-    stack.push(70);
-    stack.push(42);
-    stack.push(8);
-    stack.push(39);
-    stack.push(37);
-    stack.push(34);
-    stack.push(23);
-    cout << stack.pop() << "\n";
-    cout << stack.topElement()<< "\n";
-    return 0;
+  //Stack<int> stack;
+  //stack.push(3);
+  //stack.push(70);
+  //stack.push(42);
+  //stack.push(8);
+  //stack.push(39);
+  //stack.push(37);
+  //stack.push(34);
+  //stack.push(23);
+  //cout << stack.pop() << "\n";
+  //cout << stack.topElement()<< "\n";
+  Libro TheGoldenCompass("La Brújula Dorada", 8417092560, "YA");
+  Persona Biblioteca(0, "libre", "libre");
+  Persona Jorge(11223344, "Jorge", "Castilla");
+  Ejemplar TGC1(TheGoldenCompass, 1,Biblioteca);
+  cout << TGC1.getPoseedor().Tostring() << endl;
+  TGC1.Asignar(Jorge);
+  cout << TGC1.getPoseedor().Tostring() << endl;
+  return 0;
 }
 
 
