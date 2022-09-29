@@ -10,13 +10,13 @@
 using namespace std;
 
 class Book {
-    int ISBN;
+    long ISBN;
     string title;
     string author;
     string category;
 
 public:
-    Book(int ISBN, string title, string author, string category);
+    Book(long ISBN, string title, string author, string category);
     Book();
     string getTitle();
 

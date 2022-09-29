@@ -5,7 +5,7 @@
 #include "Book.h"
 
 Book::Book() {}
-Book::Book(int ISBN,string title,string author, string category) {
+Book::Book(long ISBN,string title,string author, string category) {
     Book::ISBN=ISBN;
     Book::title=title;
     Book::author=author;
