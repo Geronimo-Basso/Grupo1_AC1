@@ -3,4 +3,4 @@ project(Grupo1_AC1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Grupo1_AC1 main.cpp Persona.cpp Persona.h Libro.cpp Libro.h Ejemplar.cpp Ejemplar.h Menu.cpp Menu.h)
+add_executable(Grupo1_AC1 main.cpp User.cpp User.h Book.cpp Book.h Menu.cpp Menu.h)

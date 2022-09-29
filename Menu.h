@@ -5,17 +5,15 @@
 #ifndef GRUPO1_AC1_MENU_H
 #define GRUPO1_AC1_MENU_H
 
-#include "Libro.h"
-#include "Persona.h"
-#include "Ejemplar.h"
+#include "Book.h"
+#include "User.h"
 
 using namespace std;
 
 
 class Menu {
-    vector<Libro> titulos;
-    vector<Persona> usuarios;
-    vector<Ejemplar> libros;
+    vector<Book> books;
+    vector<User> users;
     Menu();
     void declaracionInicial();
 };
