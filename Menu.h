@@ -1,21 +1,26 @@
-//
-// Created by Jorge Castilla on 29/9/22.
-//
-
 #ifndef GRUPO1_AC1_MENU_H
 #define GRUPO1_AC1_MENU_H
 
-#include "Book.h"
-#include "User.h"
+#include "Libro.h"
+#include "Usuario.h"
+#include "vector"
 
 using namespace std;
 
 
 class Menu {
-    vector<Book> books;
-    vector<User> users;
-    Menu();
+    vector<Libro> libros;
+    vector<Usuario> usuarios;
+
+public:
     void declaracionInicial();
+    Menu();
+    void addLibros(Libro libro) {
+        libros.push_back(libro);
+    }
+    void addUsuario(Usuario usuario) {
+        usuarios.push_back(usuario);
+    }
 };
 
 

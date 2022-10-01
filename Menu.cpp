@@ -1,22 +1,43 @@
 #include <iostream>
 #include <vector>
 #include "Menu.h"
-#include "Book.h"
-#include "User.h"
-
+#include "Libro.h"
+#include "Usuario.h"
 using namespace std;
+
 Menu::Menu() {
+    vector<Libro> librosDisponibles;
+    declaracionInicial();
     char seleccion;
+    string documento;
     while (true)
     {
-        cout << "Selecione una opcion:" << endl;
+        cout << "Selecione una opcion: " << "\n1.Comprobar que libros hay disponibles \n2.Ver historial de una persona \n3.Ver prestamos activosde una persona \n4.Sacar o Devolver un libro" << endl;
         cin >> seleccion;
         switch (seleccion){
             case '1':
+                cout << "Los libros disponibles actualmente son: " << endl;
+                for (int i = 0; i < libros.size(); i++){
+                    if(libros[i].getEstaDisponible()== true){
+                        librosDisponibles.push_back(libros[i]);
+                    }
+                }
                 break;
 
             case '2':
+                cout << "Inserte el DNI de la persona que quiere ver el historial: " << endl;
+                cin >> documento;
+                bool encontreUsuario= false;
+                for (int i = 0; i < usuarios.size(); i++){
+                    if(usuarios[i].getDNI()==documento){
+                       encontreUsuario=true;
+                       //entrar al stack de usuario y imprimirlo
+                    }
+                }
 
+                if(!encontreUsuario){
+                    cout << "El DNI ingresado no esta registrado en nuestro sistema, intente otra vez." << endl;
+                }
                 break;
 
             case '3':
@@ -26,44 +47,48 @@ Menu::Menu() {
             case '4':
 
                 break;
+
+            default:
+                cout << "Porfavor elija una opción valida.";
         }
     }
 }
 
 void Menu::declaracionInicial() {
-    Book(9780151660346,"1984","George Orwell","Distopía");
-    Book(9780679643456,"Nada","Carmen Laforet","Guerra");
-    Book(9781421846774,"Los Miserables","Víctor Hugo","Sociedad");
-    Book(9788408052944,"El Alquimista","Paulo Coelho","Aventura");
-    Book(9781607109914,"La Divina Comedia","Dante","Comedia");
-    Book(9780065023961,"Cien Años de Soledad","Gabriel García Marquez","Novela");
-    Book(9783140464079,"El Principito","Antoine de Saint-Exupéry","Fantasía");
-    Book(9780140431872,"El retrato de Dorian Grey","Oscar Wilde","Novela");
-    Book(9781604135794,"Un mundo feliz","Aldous Huxley","Distopía");
-    Book(9780141182575,"A sangre fría","Truman Capote","Acción");
-    Book(9780003700862,"Cumbres Borrascosas","Emily Bronte","Amor");
-    Book(9788489666153,"Rayuela","Julio Cortázar","Novela");
-    Book(9780194227568,"Mujercitas","Louise May Alcott","Sociedad");
-    Book(9783100767134,"El Diario de Ana Frank","Ana Frank","Guerra");
-    Book(9780521402309,"El gran Gatsby","F. Scott Fitzgerald","Novela");
-    Book(9780395647400,"El señor de los anillos","J.R.R. Tolkien","Fantasía");
-    Book(9780062896261,"American gods","Neil Gaiman","Fantasía");
-    Book(9783608938159,"Crónica del asesino de reyes","Patrick Rothfuss","Fantasía");
-    Book(9780590353403,"Harry Potter","JK Rowling","Fantasía");
-    Book(9780007241873,"Las crónicas de Narnia","C.S. Lewis","Fantasía");
-    User("00000000A","Carlos","García");
-    User("00000000B","Ruben","Pajares");
-    User("00000000C","María","Martínez");
-    User("00000000D","Paula","Herranz");
-    User("00000000E","Fernando","Contreras");
-    User("00000000F","Saturnina","Gil");
-    User("00000000G","Pepe","Mora");
-    User("00000000H","Lucia","Lucia");
-    User("00000000I","Francisco","Vena");
-    User("00000000J","Jorge","Nitales");
-    User("00000000K","Teodoro","Amigo");
-    User("00000000L","Carlota","Esteban");
-    User("00000000M","Luisa","Quiroz");
-    User("00000000N","Laura","Reyes");
-    User("00000000P","Victoria","Doblas");
+    libros.push_back(Libro(9780151660346, "1984", "George Orwell", "Distopía"));
+    libros.push_back(Libro(9780679643456, "Nada", "Carmen Laforet", "Guerra"));
+    libros.push_back(Libro(9781421846774, "Los Miserables", "Víctor Hugo", "Sociedad"));
+    libros.push_back(Libro(9788408052944, "El Alquimista", "Paulo Coelho", "Aventura"));
+    libros.push_back(Libro(9781607109914, "La Divina Comedia", "Dante", "Comedia"));
+    libros.push_back(Libro(9780065023961, "Cien Años de Soledad", "Gabriel García Marquez", "Novela"));
+    libros.push_back(Libro(9783140464079, "El Principito", "Antoine de Saint-Exupéry", "Fantasía"));
+    libros.push_back(Libro(9780140431872, "El retrato de Dorian Grey", "Oscar Wilde", "Novela"));
+    libros.push_back(Libro(9781604135794, "Un mundo feliz", "Aldous Huxley", "Distopía"));
+    libros.push_back(Libro(9780141182575, "A sangre fría", "Truman Capote", "Acción"));
+    libros.push_back(Libro(9780003700862, "Cumbres Borrascosas", "Emily Bronte", "Amor"));
+    libros.push_back(Libro(9788489666153, "Rayuela", "Julio Cortázar", "Novela"));
+    libros.push_back(Libro(9780194227568, "Mujercitas", "Louise May Alcott", "Sociedad"));
+    libros.push_back(Libro(9783100767134, "El Diario de Ana Frank", "Ana Frank", "Guerra"));
+    libros.push_back(Libro(9780521402309, "El gran Gatsby", "F. Scott Fitzgerald", "Novela"));
+    libros.push_back(Libro(9780395647400, "El señor de los anillos", "J.R.R. Tolkien", "Fantasía"));
+    libros.push_back(Libro(9780062896261, "American gods", "Neil Gaiman", "Fantasía"));
+    libros.push_back(Libro(9783608938159, "Crónica del asesino de reyes", "Patrick Rothfuss", "Fantasía"));
+    libros.push_back(Libro(9780590353403, "Harry Potter", "JK Rowling", "Fantasía"));
+    libros.push_back(Libro(9780007241873, "Las crónicas de Narnia", "C.S. Lewis", "Fantasía"));
+    usuarios.push_back(Usuario("00000000", "libre", "libre"));
+    usuarios.push_back(Usuario("00000000A", "Carlos", "García"));
+    usuarios.push_back(Usuario("00000000B", "Ruben", "Pajares"));
+    usuarios.push_back(Usuario("00000000C", "María", "Martínez"));
+    usuarios.push_back(Usuario("00000000D", "Paula", "Herranz"));
+    usuarios.push_back(Usuario("00000000E", "Fernando", "Contreras"));
+    usuarios.push_back(Usuario("00000000F", "Saturnina", "Gil"));
+    usuarios.push_back(Usuario("00000000G", "Pepe", "Mora"));
+    usuarios.push_back(Usuario("00000000H", "Lucia", "Lucia"));
+    usuarios.push_back(Usuario("00000000I", "Francisco", "Vena"));
+    usuarios.push_back(Usuario("00000000J", "Jorge", "Nitales"));
+    usuarios.push_back(Usuario("00000000K", "Teodoro", "Amigo"));
+    usuarios.push_back(Usuario("00000000L", "Carlota", "Esteban"));
+    usuarios.push_back(Usuario("00000000M", "Luisa", "Quiroz"));
+    usuarios.push_back(Usuario("00000000N", "Laura", "Reyes"));
+    usuarios.push_back(Usuario("00000000P", "Victoria", "Doblas"));
 }
