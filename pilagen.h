@@ -1,14 +1,17 @@
 #include <iostream>
+#include "vector"
 using namespace std;
 
-template <typename T> class Pila
+template <typename T>
+class Pila
 {
 private:
-        T datos[50];
+        vector <T> datos;
         int elementos;
 public:
     // constructor de una pila vacía:
-    Pila(): elementos(0) {}
+    Pila() {}
+
 
     // Función de inserción de elementos dentro de una pila;
     void insert(T elem)
