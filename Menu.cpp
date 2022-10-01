@@ -10,6 +10,7 @@ Menu::Menu() {
     declaracionInicial();
     char seleccion;
     string documento;
+    bool encontreUsuario=false;
     while (true)
     {
         cout << "Selecione una opcion: " << "\n1.Comprobar que libros hay disponibles \n2.Ver historial de una persona \n3.Ver prestamos activosde una persona \n4.Sacar o Devolver un libro" << endl;
@@ -18,16 +19,18 @@ Menu::Menu() {
             case '1':
                 cout << "Los libros disponibles actualmente son: " << endl;
                 for (int i = 0; i < libros.size(); i++){
-                    if(libros[i].getEstaDisponible()== true){
+                    if(libros[i].getEstaDisponible()){
                         librosDisponibles.push_back(libros[i]);
                     }
+                }
+                for (int i = 0; i < librosDisponibles.size(); i++){
+                    cout << librosDisponibles.at(i).getTitulo() << endl;
                 }
                 break;
 
             case '2':
                 cout << "Inserte el DNI de la persona que quiere ver el historial: " << endl;
                 cin >> documento;
-                bool encontreUsuario= false;
                 for (int i = 0; i < usuarios.size(); i++){
                     if(usuarios[i].getDNI()==documento){
                        encontreUsuario=true;
@@ -41,11 +44,11 @@ Menu::Menu() {
                 break;
 
             case '3':
-
+                cout << "this is temporal";
                 break;
 
             case '4':
-
+                cout << "this is temporal";
                 break;
 
             default:
@@ -74,6 +77,7 @@ void Menu::declaracionInicial() {
     libros.push_back(Libro(9780062896261, "American gods", "Neil Gaiman", "Fantasía"));
     libros.push_back(Libro(9783608938159, "Crónica del asesino de reyes", "Patrick Rothfuss", "Fantasía"));
     libros.push_back(Libro(9780590353403, "Harry Potter", "JK Rowling", "Fantasía"));
+    libros.push_back(Libro(9788417092566, "La brújula dorada", "Philip Pullman", "Fantasía"));
     libros.push_back(Libro(9780007241873, "Las crónicas de Narnia", "C.S. Lewis", "Fantasía"));
     usuarios.push_back(Usuario("00000000", "libre", "libre"));
     usuarios.push_back(Usuario("00000000A", "Carlos", "García"));
