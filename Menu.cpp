@@ -11,6 +11,7 @@ Menu::Menu() {
     char seleccion;
     string documento;
     bool encontreUsuario = false;
+    string isbn;
     while (true) {
         cout << "Selecione una opcion: "
              << "\n1.Comprobar que libros hay disponibles \n2.Ver historial de una persona \n3.Ver prestamos activos de una persona \n4.Sacar un libro \n5.Devolver un libro"
@@ -35,11 +36,8 @@ Menu::Menu() {
                 for (int i = 0; i < usuarios.size(); i++) {
                     if (usuarios[i].getDNI() == documento) {
                         encontreUsuario = true;
-                        //entrar al stack de usuario y imprimirlo
-                        for (int i = 0; i < usuarios.size(); i++) {
-                            for (int j = 0; j < usuarios.at(i).getHistorial().Numero(); j++) {
-                                cout << usuarios.at(i).getHistorial().devolverDatos().at(j).getTitulo() << endl;
-                            }
+                        for (int k = 0; k < usuarios.at(i).getHistorial().devolverDatos().size(); k++) {
+                            cout << usuarios.at(i).getHistorial().devolverDatos().at(k).getTitulo() << endl;
                         }
                     }
                 }
@@ -50,31 +48,46 @@ Menu::Menu() {
                 break;
 
             case '3':
-                cout << "this is temporal";
+                cout << "Inserte el DNI de la persona que quiera ver su libro prestado: " << endl;
+                cin >> documento;
+                for (int j = 0; j < usuarios.size(); j++) {
+                    if (usuarios[j].getDNI() == documento) {
+                        cout << usuarios.at(j).getMilibro().getTitulo() << endl;
+                    }
+                }
                 break;
 
             case '4':
-                cout << "this is temporal";
+                cout << "Introduzca el ISBN del libro que desea sacar: ";
+                cin >> documento;
+                for (int i = 0; i < libros.size(); i++) {
+                    if (to_string(libros.at(i).getISBN()) == documento) {
+                        cout << "Inserte el DNI de la persona que quiere sacar un libro: " << endl;
+                        cin >> documento;
+                        for (int j = 0; j < usuarios.size(); j++) {
+                            if (usuarios[j].getDNI() == documento) {
+                                usuarios.at(j).setMilibro(libros.at(i));
+                                usuarios.at(j).anadirAlHistorial(libros.at(i));
+                            }
+                        }
+                        libros.at(i).setEstaDisponible(false);
+                    }
+                }
                 break;
 
 
             case '5':
-                cout << "Introduzca el ISBN";
-                cin >> documento;
+                cout << "Introduzca el ISBN del libro que quiere devolver: " << endl;
+                cin >> isbn;
                 for (int i = 0; i < libros.size(); i++) {
-                    if (to_string(libros.at(i).getISBN()) == documento) {
-                        for (int j = 0; j < usuarios.size(); j++) {
-                            if (usuarios.at(j).getMilibro().getISBN() == libros.at(i).getISBN()) {
-                                usuarios.at(j).anadirAlHistorial(libros.at(i));
-                            }
-                        }
+                    if (libros.at(i).getISBN() == stol(isbn)) {
                         libros.at(i).setEstaDisponible(true);
                     }
                 }
                 break;
 
             default:
-                cout << "Porfavor elija una opción valida.";
+                cout << "Por favor elija una opción valida.";
         }
     }
 }
@@ -82,7 +95,6 @@ Menu::Menu() {
     void Menu::declaracionInicial()
     {
         libros.push_back(Libro(9780151660346, "1984", "George Orwell", "Distopía"));
-        libros.push_back(Libro(9780679643456, "Nada", "Carmen Laforet", "Guerra"));
         libros.push_back(Libro(9781421846774, "Los Miserables", "Víctor Hugo", "Sociedad"));
         libros.push_back(Libro(9788408052944, "El Alquimista", "Paulo Coelho", "Aventura"));
         libros.push_back(Libro(9781607109914, "La Divina Comedia", "Dante", "Comedia"));
@@ -102,7 +114,7 @@ Menu::Menu() {
         libros.push_back(Libro(9780590353403, "Harry Potter", "JK Rowling", "Fantasía"));
         libros.push_back(Libro(9788417092566, "La brújula dorada", "Philip Pullman", "Fantasía"));
         libros.push_back(Libro(9780007241873, "Las crónicas de Narnia", "C.S. Lewis", "Fantasía"));
-        usuarios.push_back(Usuario("00000000", "libre", "libre"));
+        usuarios.push_back(Usuario("00000000", "Jorge", "DeLeon"));
         usuarios.push_back(Usuario("00000000A", "Carlos", "García"));
         usuarios.push_back(Usuario("00000000B", "Ruben", "Pajares"));
         usuarios.push_back(Usuario("00000000C", "María", "Martínez"));
@@ -119,4 +131,3 @@ Menu::Menu() {
         usuarios.push_back(Usuario("00000000N", "Laura", "Reyes"));
         usuarios.push_back(Usuario("00000000P", "Victoria", "Doblas"));
     }
-

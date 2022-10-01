@@ -18,7 +18,7 @@ public:
     {
         if (elementos < 50)
         {
-            datos[elementos] = elem;
+            datos.push_back(elem);
             elementos ++;
         }
         else
