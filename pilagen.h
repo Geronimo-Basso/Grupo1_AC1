@@ -50,6 +50,12 @@ public:
     {
         return elementos == 0;
     }
+
+    vector<T> devolverDatos(){
+        return datos;
+    }
+
+
 };
 
 
