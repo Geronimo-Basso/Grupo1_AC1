@@ -4,7 +4,7 @@
 using namespace std;
 
 class Libro {
-    long ISBN;
+    string ISBN;
     string titulo;
     string autor;
     string categoria;
@@ -12,11 +12,11 @@ class Libro {
 
 public:
     Libro();
-    Libro(long ISBN, string titulo, string autor, string categoria);
+    Libro(string ISBN, string titulo, string autor, string categoria);
     string getTitulo();
     bool getEstaDisponible() const;
     void setEstaDisponible(bool estaDisponible);
-    long getISBN();
+    string getISBN();
 };
 
 #endif //GRUPO1_AC1_LIBRO_H

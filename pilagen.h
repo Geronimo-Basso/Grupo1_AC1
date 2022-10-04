@@ -16,7 +16,7 @@ public:
     // Función de inserción de elementos dentro de una pila;
     void insert(T elem)
     {
-        if (elementos < 50)
+        if (datos.size() < 50)
         {
             datos.push_back(elem);
             elementos ++;
@@ -30,7 +30,7 @@ public:
     // Función de extracción de elemento de una pila;
     T extract()
     {
-        if (elementos > 0)
+        if (datos.size() > 0)
         {
             elementos --;
             return datos[elementos];
@@ -43,7 +43,7 @@ public:
 
     int Numero()
     {
-        return elementos;
+        return datos.size();
     }
 
     bool es_vacia()

@@ -2,7 +2,7 @@
 
 Libro::Libro(){}
 
-Libro::Libro(long ISBN, string titulo, string autor, string categoria) {
+Libro::Libro(string ISBN, string titulo, string autor, string categoria) {
     Libro::ISBN=ISBN;
     Libro::titulo=titulo;
     Libro::autor=autor;
@@ -22,7 +22,7 @@ void Libro::setEstaDisponible(bool estaDisponible) {
     Libro::estaDisponible = estaDisponible;
 }
 
-long Libro::getISBN() {
+string Libro::getISBN() {
     return Libro::ISBN;
 }
 
